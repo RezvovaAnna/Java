@@ -1,1 +1,33 @@
+//Реализовать простой калькулятор
+import java.util.Scanner;
+public class task_06 {
+    public static void main(String[] args) {
+        Scanner iScanner = new Scanner(System.in);
+        System.out.printf("Введите первое число: ");
+        int n = iScanner.nextInt();
+        System.out.printf("Введите второе число: ");
+        int n2 = iScanner.nextInt();
+        System.out.printf("Выбирите +,-,*,/: ");
+        char oper = iScanner.next().charAt(0);
+        
+        if(oper == '+') {
+            int res = n + n2;
+            System.out.printf("%d + %d = %d%n", n, n2, res);
+        }
+        if(oper == '-') {
+            int res = n - n2;
+            System.out.printf("%d - %d = %d%n", n, n2, res);
+        }
+        if(oper == '/') {
+            int res = n / n2;
+            System.out.printf("%d / %d = %d%n", n, n2, res);
+        }
+        if(oper == '*') {
+            int res = n * n2;
+            System.out.printf("%d * %d = %d%n", n, n2, res);
+        }
+         
+        iScanner.close();
+    }
 
+}
