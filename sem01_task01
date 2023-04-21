@@ -1,1 +1,18 @@
+//Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
+
+import java.util.Scanner;
+
+public class task01 {
+    public static void main(String[] args) {
+        System.out.printf("Введите число: ");
+        Scanner iScanner = new Scanner(System.in);
+        int n = iScanner.nextInt();
+        int res = 1;
+        for (int i = 1; i <= n; i++) {
+            res *= i;            
+        }
+        System.out.printf("Треугольное число %d: %d%n", n, res);
+        iScanner.close();
+     }
+}
 
