@@ -1,1 +1,24 @@
+//Вывести все простые числа от 1 до 1000
+public class task_02 {
+    public static void main(String[] args) {
+        StringBuilder res =  new StringBuilder();
+        int i, j;
+        boolean check;
+        for (i = 2; i < 100; i++) {
+            check = true;
+            for (j = 2; j < i; j++) {
+                if ((i % j) == 0) {
+                    check = false;
+                    break;
+                }
+            }
+
+            if (check) {
+                res.append(i + " ");
+ 
+            }
+        }
+        System.out.println(res.toString());
+    }
+}
 
