@@ -1,1 +1,25 @@
+package sem2_task01;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class sem2_task01 {
+    public static void main(String[] args) {
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("имя", "Иванов");
+        map.put("страна", "Россия");
+        map.put("город", "Москва");
+        map.put("возраст",  null);
+        System.out.println(GetWhere(map));
+    }
+
+    public static String GetWhere(Map<String, String> params) {
+        StringBuilder where = new StringBuilder();
+        for (Map.Entry<String, String> pair: params.entrySet()) {
+            if (pair.getValue() != null) {
+                where.append(pair.getKey() + ": " + pair.getValue() + " ");
+            }
+        }
+        return where.toString();
+    }
+}
 
