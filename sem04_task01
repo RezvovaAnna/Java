@@ -1,1 +1,30 @@
+import java.util.*;
 
+public class task01 {
+
+
+public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            Deque<String> deque = new ArrayDeque<String>();
+            root: while (true) { 
+                System.out.printf("Введите строку: ");
+                String line = sc.nextLine();
+                if ("exit".equals(line)) {
+                    break;
+                }
+                if ("print".equals(line)) {
+                    deque.iterator().forEachRemaining(System.out::println);
+                    }
+                if ("revert".equals(line)) {
+                    deque.removeLast();
+                }
+                      
+                else {
+                    deque.push(line);
+                    }
+    
+                
+            }
+        }
+}
+            
