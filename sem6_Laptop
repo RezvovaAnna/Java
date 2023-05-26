@@ -1,1 +1,48 @@
 
+public class Laptop {
+    private String model;
+    private String colour;
+    private String OS;
+    private int RAM; 
+    private int HDD;
+     
+
+    public Laptop(String model, String colour, String OS, int RAM, int HDD) {
+        this.model = model;
+        this.colour = colour;
+        this.OS = OS;
+        this.RAM = RAM;
+        this.HDD = HDD;
+        
+    }
+
+  public String getColour() {
+      return colour;
+  }
+
+  public String getOS() {
+      return OS;
+  }
+
+  public int getRAM() {
+      return RAM;
+  }
+
+  public int getHDD() {
+      return HDD;
+  }
+  
+  public String getModel() {
+    return model;
+}
+
+  
+@Override
+public String toString () {
+  return  "Модель: " + model + " " + "Цвет: "+ colour + " " + " OC: " + OS + " "+ "ОЗУ: " + RAM + " " + "Объем ЖД: " + HDD;
+}
+
+
+}
+
+
