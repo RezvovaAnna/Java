@@ -1,47 +1,108 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 
-public class Laptop {
-    private String model;
-    private String colour;
-    private String OS;
-    private int RAM; 
-    private int HDD;
-     
+public class Store {
+    private Set<Laptop> laptops;
 
-    public Laptop(String model, String colour, String OS, int RAM, int HDD) {
-        this.model = model;
-        this.colour = colour;
-        this.OS = OS;
-        this.RAM = RAM;
-        this.HDD = HDD;
-        
+    public Store() {
+        laptops = new HashSet<>();
     }
 
-  public String getColour() {
-      return colour;
-  }
+    public void addLaptop(Laptop laptop) {
+        laptops.add(laptop);
+    }
 
-  public String getOS() {
-      return OS;
-  }
+    public void wichLaptop(Map<String, Object> filters) {
+        for (Laptop laptop : laptops ) {
+              boolean pass = true;
+              for (String key : filters.keySet()) {
+                  Object value = filters.get(key);
+                  switch (key) {
+                    case "model":
+                        if (!laptop.getModel().equals(value)) {
+                            pass = false;
+                          }
+                        break;
+                    case "color":
+                        if (!laptop.getColour().equals(value)) {
+                            pass = false;
+                        }
+                        break;
+                    case "OS":
+                        if (!laptop.getOS().equals(value)) {
+                            pass = false;
+                          }
+                          break;
+                      case "RAM":
+                          if (laptop.getRAM() < (int) value) {
+                              pass = false;
+                          }
+                          break;
+                      case "HDD":
+                          if (laptop.getHDD() < (int) value) {
+                              pass = false;
+                          }
+                          break;
+          
+                      default:
+                          System.out.println("Неизвестный критерий: " + key);
+                  }
+              }
+              if (pass) {
+                  System.out.print(laptop);
+              }
+              
+            }
+    }
+public static void main(String[] args) {
 
-  public int getRAM() {
-      return RAM;
-  }
-
-  public int getHDD() {
-      return HDD;
-  }
-  
-  public String getModel() {
-    return model;
-}
-
-  
-@Override
-public String toString () {
-  return  "Модель: " + model + " " + "Цвет: "+ colour + " " + " OC: " + OS + " "+ "ОЗУ: " + RAM + " " + "Объем ЖД: " + HDD;
-}
-
+    Laptop DEXPAquilon = new Laptop( "DEXPAquilon", "silver", "Windows", 4, 128);
+    Laptop IrbisNB257 = new Laptop("IrbisNB257", "silver", "Windows", 4, 128);
+    Laptop AcerExtensa = new Laptop("AcerExtensa", "black", "Windows", 4, 128);
+    Laptop LenovoIdeaPad = new Laptop("LenovoIdeaPad", "silver", "Windows", 4, 1000);
+    Laptop MacBookPro = new Laptop("MacBookPro", "silver", "macOS", 8, 256);
+    Laptop MacBookPro1 = new Laptop("MacBookPro", "silver", "macOS", 16, 512);
+    Laptop TecnoMegabook = new Laptop("TecnoMegabook", "green", "Linux", 12, 256);
+    Laptop Maibenben = new Laptop("Maibenben", "black", "Linux", 16, 1024);
+    
+    Store allLaptop = new Store(); 
+        allLaptop.addLaptop(DEXPAquilon);
+        allLaptop.addLaptop(IrbisNB257);
+        allLaptop.addLaptop(AcerExtensa);
+        allLaptop.addLaptop(LenovoIdeaPad);
+        allLaptop.addLaptop(MacBookPro);
+        allLaptop.addLaptop(MacBookPro1);
+        allLaptop.addLaptop(TecnoMegabook);
+        allLaptop.addLaptop(Maibenben);
+    
+       Scanner sc = new Scanner(System.in);
+       Map<String, Object> filters = new HashMap<>();
+       System.out.print("Введите модель(англ): ");
+        String model = sc.nextLine();
+        if (!model.isEmpty()) {
+            filters.put("model", model);
+        }
+        System.out.print("Введите цвет(англ): ");
+        String color = sc.nextLine();
+        if (!color.isEmpty()) {
+            filters.put("color", color);
+        }
+        System.out.print("Введите OC(англ): ");
+        String os = sc.nextLine();
+        if (!color.isEmpty()) {
+            filters.put("OS", os);
+        }
+        System.out.print("Введите объем ОЗУ: ");
+        int ram = sc.nextInt();
+        filters.put("RAM", ram);
+        System.out.print("Введите объем ЖД: ");
+        int hdd = sc.nextInt();
+        filters.put("HDD", hdd);
+        sc.close();
+        allLaptop.wichLaptop(filters);    
 
 }
 
